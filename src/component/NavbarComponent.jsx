@@ -5,6 +5,7 @@ import { Dialog } from "@headlessui/react";
 
 const navigation = [
   { name: "Product", href: "/products" },
+  { name: "Contact", href: "#" },
   { name: "Tentang Kami", href: "/tentang" },
 ];
 
