@@ -6,6 +6,7 @@ import HomePage from "./pages/homePage";
 import ProductPage from "./pages/productPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import AboutPage from "./pages/AboutPage";
 
 
 const router = createBrowserRouter([
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/products",
     element: <ProductPage />,
+  },
+  {
+    path: "/tentang",
+    element: <AboutPage/>
   },
   {
     path: "/login",

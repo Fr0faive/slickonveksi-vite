@@ -5,7 +5,7 @@ import { Dialog } from "@headlessui/react";
 
 const navigation = [
   { name: "Product", href: "/products" },
-  { name: "Tentang Kami", href: "#" },
+  { name: "Tentang Kami", href: "/tentang" },
 ];
 
 const NavbarComponent = () => {
@@ -33,8 +33,8 @@ const NavbarComponent = () => {
           >
             <img
               className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-              alt=""
+              src="/assets/logo.png"
+              alt="slickonveksi"
             />
             <span className="text-black ml-3 font-semibold">Slickonveksi.</span>
           </Link>
@@ -83,7 +83,7 @@ const NavbarComponent = () => {
             >
               <img
                 className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                src="/assets/logo.png"
                 alt=""
               />
               <span className="text-black ml-3 font-semibold">
