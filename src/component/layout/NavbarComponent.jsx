@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Dialog } from "@headlessui/react";
+import authService from "../../services/auth.service";
 
 const navigation = [
   { name: "Product", href: "/products" },
@@ -10,19 +11,36 @@ const navigation = [
 ];
 
 const NavbarComponent = () => {
+  const hasToken = localStorage.getItem("Authorization");
+  console.log(hasToken);
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    try {
+      await authService.logoutUser();
+      alert("Logout success");
+      window.location.href = "/";
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [colorChange, setColorchange] = useState(false);
   const changeNavbarColor = () => {
-      if (window.scrollY >= 80) {
-          setColorchange(true);
-      }
-      else {
-          setColorchange(false);
-      }
+    if (window.scrollY >= 80) {
+      setColorchange(true);
+    } else {
+      setColorchange(false);
+    }
   };
-  window.addEventListener('scroll', changeNavbarColor);
+  window.addEventListener("scroll", changeNavbarColor);
   return (
-    <header className={colorChange ? 'bg-white/30 backdrop-blur-md fixed inset-x-0 top-0 z-50' : 'fixed inset-x-0 top-0 z-50'}>
+    <header
+      className={
+        colorChange
+          ? "bg-white/30 backdrop-blur-md fixed inset-x-0 top-0 z-50"
+          : "fixed inset-x-0 top-0 z-50"
+      }
+    >
       <nav
         className="flex items-center justify-between p-6 lg:px-8"
         aria-label="Global"
@@ -60,14 +78,25 @@ const NavbarComponent = () => {
             </Link>
           ))}
         </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link
-            to={"/login"}
-            className="text-sm font-semibold leading-6 text-gray-900"
-          >
-            Login <span aria-hidden="true">&rarr;</span>
-          </Link>
-        </div>
+        {hasToken ? (
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <button
+              onClick={handleLogout}
+              className="text-sm font-semibold leading-6 text-gray-900"
+            >
+              Logout <span aria-hidden="true">&rarr;</span>
+            </button>
+          </div>
+        ) : (
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <Link
+              to={"/login"}
+              className="text-sm font-semibold leading-6 text-gray-900"
+            >
+              Login <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </div>
+        )}
       </nav>
       <Dialog
         as="div"
@@ -82,11 +111,7 @@ const NavbarComponent = () => {
               to={"/"}
               className="-m-1.5 p-1.5 flex justify-between items-center"
             >
-              <img
-                className="h-8 w-auto"
-                src="/assets/logo.png"
-                alt=""
-              />
+              <img className="h-8 w-auto" src="/assets/logo.png" alt="" />
               <span className="text-black ml-3 font-semibold">
                 Slickonveksi.
               </span>
