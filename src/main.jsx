@@ -8,7 +8,6 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import AboutPage from "./pages/AboutPage";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,7 +19,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/tentang",
-    element: <AboutPage/>
+    element: <AboutPage />,
   },
   {
     path: "/login",
@@ -29,11 +28,11 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <RegisterPage />,
-  }
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-      <RouterProvider router={router} className="font-sans" />
+    <RouterProvider router={router} className="font-sans" />
   </React.StrictMode>
 );

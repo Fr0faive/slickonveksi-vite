@@ -1,11 +1,12 @@
-import FormLayout from "../layout/FormLayout";
+import FormRegister from "../component/Fragments/FormRegister";
+import AuthLayout from "../component/layout/AuthLayout";
 
 const registerPage = () => {
-    return (
-        <div className="bg-white dark:bg-gray-950 backdrop-blur-md">
-            <FormLayout Children="Sign up for" labelText="username" submitText="Register"/>
-        </div>
-    )
-}
+  return (
+    <AuthLayout title="Register">
+      <FormRegister />
+    </AuthLayout>
+  );
+};
 
 export default registerPage;
