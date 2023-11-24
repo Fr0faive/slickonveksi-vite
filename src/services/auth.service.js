@@ -43,6 +43,7 @@ const logoutUser = async () => {
 
     // Hapus token dari localStorage
     localStorage.removeItem("Authorization");
+    localStorage.removeItem("Roles");
 
     console.log("Logout berhasil");
   } catch (error) {

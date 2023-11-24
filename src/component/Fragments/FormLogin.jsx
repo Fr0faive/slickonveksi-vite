@@ -23,7 +23,9 @@ const FormLogin = () => {
       const loginResult = await authService.loginUser(loginData);
       console.log("Login berhasil:", loginResult);
       localStorage.setItem("Authorization", loginResult.data.token);
+      localStorage.setItem("Roles", loginResult.data.roles);
       // Update authentication status using Redux
+      alert("Login berhasil");
 
       // Redirect to the home page or the previous protected route
       navigate("/");

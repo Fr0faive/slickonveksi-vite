@@ -5,6 +5,7 @@ import authService from "../../services/auth.service";
 import { Link } from "react-router-dom";
 
 const FormRegister = () => {
+  const [mSuccess, setMSuccess] = useState(null);
   const handleChange = (e) => {
     setRegisterData({ ...registerData, [e.target.name]: e.target.value });
   };
@@ -16,12 +17,15 @@ const FormRegister = () => {
   });
   const handleRegister = async (e) => {
     e.preventDefault();
+    setMSuccess("");
     try {
       // Panggil fungsi registerUser dari authService
       await authService.registerUser(registerData);
 
       // Registrasi berhasil, Anda dapat menangani navigasi atau menampilkan pesan sukses di sini
       console.log("Registrasi berhasil");
+
+      setMSuccess("Registrasi berhasil");
 
       // Setelah registrasi berhasil, Anda mungkin ingin melakukan navigasi ke halaman login atau halaman lainnya
     } catch (error) {
@@ -53,6 +57,7 @@ const FormRegister = () => {
         onChange={handleChange}
       />
       <Button children="SignUp" type="submit" />
+      {mSuccess && <p className="text-green-500 my-3">{mSuccess}</p>}
       <p className="text-black">
         Already have account?{" "}
         <Link to="/login" className="text-blue-500">
