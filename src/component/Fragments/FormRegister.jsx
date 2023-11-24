@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "../Elements/Button";
 import InputElement from "../Elements/Input";
 import authService from "../../services/auth.service";
+import { Link } from "react-router-dom";
 
 const FormRegister = () => {
   const handleChange = (e) => {
@@ -52,6 +53,12 @@ const FormRegister = () => {
         onChange={handleChange}
       />
       <Button children="SignUp" type="submit" />
+      <p className="text-black">
+        Already have account?{" "}
+        <Link to="/login" className="text-blue-500">
+          Login
+        </Link>
+      </p>
     </form>
   );
 };

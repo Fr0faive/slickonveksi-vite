@@ -1,7 +1,5 @@
 const Logo = () => {
-  return (
-    <img className="h-24 w-auto" src="/assets/logo.png" alt="slickonveksi" />
-  );
+  return <img className="w-10/12" src="/assets/logo.png" alt="slickonveksi" />;
 };
 
 export default Logo;

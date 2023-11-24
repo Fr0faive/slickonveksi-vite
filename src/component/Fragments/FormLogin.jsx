@@ -2,7 +2,7 @@ import Button from "../Elements/Button";
 import InputElement from "../Elements/Input";
 import authService from "../../services/auth.service";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const FormLogin = () => {
   const navigate = useNavigate();
@@ -32,7 +32,8 @@ const FormLogin = () => {
     } catch (error) {
       console.log(loginData);
       console.error("Login gagal:", error);
-      setMError("Login gagal. Periksa kembali username dan password Anda.");
+      const errorMsg = error.toString();
+      setMError(errorMsg);
     }
   };
 
@@ -55,6 +56,12 @@ const FormLogin = () => {
       />
       {mError && <p className="text-red-500 mt-3">{mError}</p>}
       <Button children="Login" type="submit" />
+      <p className="text-black">
+        Don't have account?{" "}
+        <Link to="/register" className="text-blue-500">
+          Register
+        </Link>
+      </p>
     </form>
   );
 };
