@@ -20,17 +20,16 @@ const HeroLayout = () => {
           <h1 className="text-3xl sm:text-5xl font-bold text-black">
             Slickonveksi.
           </h1>
-          <p className="py-6 text-black text-justify">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi,
-            recusandae sunt aliquid fugit aperiam qui sed asperiores voluptatum
-            quisquam magnam doloremque incidunt facilis! Minus, aut porro
-            praesentium vero, iure iste cum, quod consequuntur dolorum magni
-            aperiam. Illum ea error eligendi, in dicta, quisquam qui nihil quae
-            id architecto sunt asperiores.
+          <p className="py-6 text-black text-lg text-justify">
+            Temukan gaya dan kenyamanan dengan koleksi terbaik kami dari produk
+            konveksi. Slickonveksi membawa sentuhan eksklusif dan keunggulan
+            kualitas ke dalam setiap potongan pakaian kami. Dibuat dengan teliti
+            oleh para ahli konveksi kami, setiap produk menjadi manifestasi gaya
+            dan fungsionalitas.
           </p>
           <Link
             to={"/product"}
-            className="flex h-11 my-5 w-1/4 items-center justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="flex h-11 my-5 w-1/5 items-center justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Pesan Sekarang
           </Link>

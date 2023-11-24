@@ -4,23 +4,23 @@ export default {
     themes: [
       {
         mytheme: {
-          "primary": "#44c9b1",
-          
-          "secondary": "#5cc4ed",
+          primary: "#44c9b1",
 
-          "accent": "#dc5dfc",
+          secondary: "#5cc4ed",
 
-          "neutral": "#ffc32d",
+          accent: "#dc5dfc",
+
+          neutral: "#ffc32d",
 
           "base-100": "#31373a",
 
-          "info": "#4b80dd",
+          info: "#4b80dd",
 
-          "success": "#169c8d",
+          success: "#169c8d",
 
-          "warning": "#f8cc5d",
+          warning: "#f8cc5d",
 
-          "error": "#fa6052",
+          error: "#fa6052",
         },
       },
     ],
@@ -31,12 +31,15 @@ export default {
       backgroundColor: {
         "blue-primary": "#3540be",
         "burn-orange": "#ff692a",
-        "sunglow": "#ffc32d",
-        "malachite": "#14e065",
+        sunglow: "#ffc32d",
+        malachite: "#14e065",
         "black-pearl": "#14171c",
       },
       colors: {
         "black-pearl": "#14171c",
+      },
+      backgroundImage: {
+        auth: "url('./assets/bg-auth.jpg')",
       },
     },
   },

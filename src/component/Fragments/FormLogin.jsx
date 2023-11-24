@@ -34,7 +34,7 @@ const FormLogin = () => {
     } catch (error) {
       console.log(loginData);
       console.error("Login gagal:", error.errors);
-      const errorMsg = error.errors.toString();
+      const errorMsg = error.errors;
       setMError(errorMsg);
     }
   };
