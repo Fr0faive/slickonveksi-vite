@@ -5,14 +5,13 @@ import { Dialog } from "@headlessui/react";
 import authService from "../../services/auth.service";
 
 const navigation = [
-  { name: "Product", href: "/products" },
-  { name: "Contact", href: "#" },
-  { name: "Tentang Kami", href: "/tentang" },
+  { id: 1, name: "Product", href: "/products" },
+  { id: 2, name: "Contact", href: "#" },
+  { id: 3, name: "Tentang Kami", href: "/tentang" },
 ];
 
 const NavbarComponent = () => {
   const hasToken = localStorage.getItem("Authorization");
-  console.log(hasToken);
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
@@ -71,6 +70,7 @@ const NavbarComponent = () => {
         <div className="hidden lg:flex lg:gap-x-12">
           {navigation.map((item) => (
             <Link
+              key={item.id}
               to={item.href}
               className="text-sm font-semibold leading-6 text-gray-900"
             >
@@ -130,6 +130,7 @@ const NavbarComponent = () => {
               <div className="space-y-2 py-6">
                 {navigation.map((item) => (
                   <Link
+                    key={item.id}
                     to={item.href}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
