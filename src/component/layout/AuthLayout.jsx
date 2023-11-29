@@ -11,7 +11,7 @@ const AuthLayout = (props) => {
             to="/"
             className="flex flex-col gap-3 items-center justify-center"
           >
-            <Logo />
+            <Logo size="w-1/2" />
             <h1 className="text-4xl font-bold text-black">Slickonveksi.</h1>
           </Link>
         </div>

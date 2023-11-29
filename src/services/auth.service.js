@@ -29,7 +29,6 @@ const logoutUser = async () => {
   try {
     // Panggil API untuk logout menggunakan Axios
     const token = localStorage.getItem("Authorization");
-
     if (!token) {
       throw new Error("Token not found");
     }
@@ -52,4 +51,9 @@ const logoutUser = async () => {
   }
 };
 
-export default { loginUser, registerUser, logoutUser };
+const isAuthenticated = () => {
+  const getToken = localStorage.getItem("Authorization");
+  const token = getToken;
+  return !!token; // Mengembalikan true jika token ada
+};
+export default { loginUser, registerUser, logoutUser, isAuthenticated };

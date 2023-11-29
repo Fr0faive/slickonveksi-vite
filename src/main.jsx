@@ -7,6 +7,9 @@ import ProductPage from "./pages/productPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import AboutPage from "./pages/AboutPage";
+import Dashboard from "./pages/Dashboard";
+import NotFoundPage from "./pages/404Page";
+import PrivateRoute from "./route/private.route";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +31,14 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <RegisterPage />,
+  },
+  {
+    path: "/dashboard/*",
+    element: <PrivateRoute element={Dashboard} />,
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />,
   },
 ]);
 
