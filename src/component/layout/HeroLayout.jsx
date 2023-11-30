@@ -21,7 +21,7 @@ const HeroLayout = () => {
           <h1 className="text-3xl sm:text-7xl font-bold text-black">
             Slickonveksi.
           </h1>
-          <p className="pt-6 text-black text-lg text-justify">
+          <p className="pt-6 text-black text-xl text-justify">
             Temukan gaya dan kenyamanan dengan koleksi terbaik kami dari produk
             konveksi. Slickonveksi membawa sentuhan eksklusif dan keunggulan
             kualitas ke dalam setiap potongan pakaian kami. Dibuat dengan teliti

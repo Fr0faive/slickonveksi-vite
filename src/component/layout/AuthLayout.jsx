@@ -15,7 +15,7 @@ const AuthLayout = (props) => {
             <h1 className="text-4xl font-bold text-black">Slickonveksi.</h1>
           </Link>
         </div>
-        <div className="w-1/2 bg-[#F8F3EA] rounded-r-2xl flex flex-col gap-3">
+        <div className="w-1/2 bg-[#FFF0E7] rounded-r-2xl flex flex-col gap-3">
           <div className="my-56 mx-36">
             <h1 className="text-3xl font-bold text-black text-center">
               {title}

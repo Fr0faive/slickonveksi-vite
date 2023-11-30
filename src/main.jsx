@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import AboutPage from "./pages/AboutPage";
 import Dashboard from "./pages/Dashboard";
+import Contact from "./pages/Contact";
 import NotFoundPage from "./pages/404Page";
 import PrivateRoute from "./route/private.route";
 
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/products",
     element: <ProductPage />,
+  },
+  {
+    path: "/contact",
+    element: <Contact />,
   },
   {
     path: "/tentang",

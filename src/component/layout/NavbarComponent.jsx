@@ -5,9 +5,10 @@ import { Dialog } from "@headlessui/react";
 import authService from "../../services/auth.service";
 
 const navigation = [
-  { id: 1, name: "Product", href: "/products" },
-  { id: 2, name: "Contact", href: "#" },
-  { id: 3, name: "Tentang Kami", href: "/tentang" },
+  { id: 1, name: "Home", href: "/" },
+  { id: 2, name: "Product", href: "/products" },
+  { id: 3, name: "Contact", href: "/contact" },
+  { id: 4, name: "Tentang Kami", href: "/tentang" },
 ];
 
 const NavbarComponent = () => {
@@ -67,12 +68,12 @@ const NavbarComponent = () => {
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-        <div className="hidden lg:flex lg:gap-x-12">
+        <div className="hidden lg:flex lg:gap-x-8">
           {navigation.map((item) => (
             <Link
               key={item.id}
               to={item.href}
-              className="text-sm font-semibold leading-6 text-gray-900"
+              className="text-sm font-semibold leading-6 py-2 px-4 rounded-full hover:bg-[#FFD7C3] text-gray-900"
             >
               {item.name}
             </Link>
@@ -91,7 +92,7 @@ const NavbarComponent = () => {
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <Link
               to={"/login"}
-              className="text-sm font-semibold leading-6 text-gray-900"
+              className="text-sm font-semibold leading-6 text-gray-900 rounded-xl py-2 px-4 bg-[#FFD7C3]"
             >
               Login <span aria-hidden="true">&rarr;</span>
             </Link>

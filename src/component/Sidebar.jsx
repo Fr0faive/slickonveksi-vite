@@ -20,7 +20,8 @@ import { Link } from "react-router-dom";
 import Button from "./Elements/Button";
 import authService from "../services/auth.service";
 
-const Sidebar = () => {
+const Sidebar = (props) => {
+  const { children } = props;
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
@@ -32,91 +33,54 @@ const Sidebar = () => {
     }
   };
   return (
-    <div className="h-screen w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
-      <div className="mb-10 p-4 flex flex-wrap justify-center items-center gap-4">
-        <Logo size="w-1/4" />
-        <span>Slickonveksi</span>
+    <div className="drawer lg:drawer-open">
+      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content flex flex-col items-center justify-center">
+        {children}
+        <label
+          htmlFor="my-drawer-2"
+          className="btn btn-primary drawer-button lg:hidden"
+        >
+          Open drawer
+        </label>
       </div>
-      <div className="flex flex-col gap-5">
-        <Link className="flex flex-row gap-3 px-6 items-center">
-          <PresentationChartBarIcon className="h-5 w-5" />
-          <span>Dashboard</span>
-        </Link>
-        <Link className="flex flex-row gap-3 px-6 items-center">
-          <ShoppingBagIcon className="h-5 w-5" />
-          <span>Products</span>
-        </Link>
-        <Link className="flex flex-row gap-3 px-6 items-center">
-          <InboxIcon className="h-5 w-5" />
-          <span>Inbox</span>
-        </Link>
-        <Link className="flex flex-row gap-3 px-6 items-center">
-          <UserCircleIcon className="h-5 w-5" />
-          <span>Profile</span>
-        </Link>
-        <Link className="flex flex-row gap-3 px-6 items-center">
-          <Cog6ToothIcon className="h-5 w-5" />
-          <span>Settings</span>
-        </Link>
-        <div className="my-auto divide-y divide-blue-gray-500/10">
-          <Button children="Logout" type="button" onClick={handleLogout} />
+      <div className="drawer-side">
+        <label
+          htmlFor="my-drawer-2"
+          aria-label="close sidebar"
+          className="drawer-overlay"
+        ></label>
+        <div className="mb-10 p-4 flex flex-wrap justify-center items-center gap-4">
+          <Logo size="w-1/4" />
+          <span>Slickonveksi</span>
+        </div>
+        <div className="flex flex-col gap-5">
+          <Link className="flex flex-row gap-3 px-6 items-center">
+            <PresentationChartBarIcon className="h-5 w-5" />
+            <span>Dashboard</span>
+          </Link>
+          <Link className="flex flex-row gap-3 px-6 items-center">
+            <ShoppingBagIcon className="h-5 w-5" />
+            <span>Products</span>
+          </Link>
+          <Link className="flex flex-row gap-3 px-6 items-center">
+            <InboxIcon className="h-5 w-5" />
+            <span>Inbox</span>
+          </Link>
+          <Link className="flex flex-row gap-3 px-6 items-center">
+            <UserCircleIcon className="h-5 w-5" />
+            <span>Profile</span>
+          </Link>
+          <Link className="flex flex-row gap-3 px-6 items-center">
+            <Cog6ToothIcon className="h-5 w-5" />
+            <span>Settings</span>
+          </Link>
+          <div className="my-auto divide-y divide-blue-gray-500/10">
+            <Button children="Logout" type="button" onClick={handleLogout} />
+          </div>
         </div>
       </div>
     </div>
-    // <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
-    //   <div className="mb-2 p-4">
-    //     <Typography variant="h5" color="blue-gray">
-    //       Sidebar
-    //     </Typography>
-    //   </div>
-    //   <List>
-    //     <ListItem>
-    //       <ListItemPrefix>
-    //         <PresentationChartBarIcon className="h-5 w-5" />
-    //       </ListItemPrefix>
-    //       Dashboard
-    //     </ListItem>
-    //     <ListItem>
-    //       <ListItemPrefix>
-    //         <ShoppingBagIcon className="h-5 w-5" />
-    //       </ListItemPrefix>
-    //       E-Commerce
-    //     </ListItem>
-    //     <ListItem>
-    //       <ListItemPrefix>
-    //         <InboxIcon className="h-5 w-5" />
-    //       </ListItemPrefix>
-    //       Inbox
-    //       <ListItemSuffix>
-    //         <Chip
-    //           value="14"
-    //           size="sm"
-    //           variant="ghost"
-    //           color="blue-gray"
-    //           className="rounded-full"
-    //         />
-    //       </ListItemSuffix>
-    //     </ListItem>
-    //     <ListItem>
-    //       <ListItemPrefix>
-    //         <UserCircleIcon className="h-5 w-5" />
-    //       </ListItemPrefix>
-    //       Profile
-    //     </ListItem>
-    //     <ListItem>
-    //       <ListItemPrefix>
-    //         <Cog6ToothIcon className="h-5 w-5" />
-    //       </ListItemPrefix>
-    //       Settings
-    //     </ListItem>
-    //     <ListItem>
-    //       <ListItemPrefix>
-    //         <PowerIcon className="h-5 w-5" />
-    //       </ListItemPrefix>
-    //       Log Out
-    //     </ListItem>
-    //   </List>
-    // </Card>
   );
 };
 

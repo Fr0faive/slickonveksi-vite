@@ -6,10 +6,26 @@ import CardComp from "../component/CardComp";
 import { getProducts } from "../services/product.service";
 
 const productPage = () => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    getProducts((data) => {
+      setProducts(data);
+    });
+  }, []);
   return (
     <>
       <NavbarComponent />
-      <ProductLayout></ProductLayout>
+      <ProductLayout>
+        {products.map((product) => (
+          <CardComp
+            key={product.id}
+            img={product.image}
+            title={product.title}
+            price={product.price}
+            text={product.description}
+          />
+        ))}
+      </ProductLayout>
       <FooterLayout />
     </>
   );
