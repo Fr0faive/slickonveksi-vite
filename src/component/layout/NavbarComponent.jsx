@@ -81,18 +81,36 @@ const NavbarComponent = () => {
         </div>
         {hasToken ? (
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <button
-              onClick={handleLogout}
-              className="text-sm font-semibold leading-6 text-gray-900"
-            >
-              Logout <span aria-hidden="true">&rarr;</span>
-            </button>
+            <div className="dropdown dropdown-hover dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="text-sm font-semibold leading-6 text-gray-900 rounded-xl py-2 px-4 bg-[#FFD7C3]"
+              >
+                User <span aria-hidden="true">&rarr;</span>
+              </div>
+              <ul className="menu dropdown-content z-[1] p-2 shadow bg-white rounded-box w-52 mt-2">
+                <li>
+                  <Link to={"/dashboard"} className="text-gray-900 text-sm">
+                    Dashboard
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    onClick={handleLogout}
+                    className="text-sm font-semibold leading-6 text-gray-900 rounded-box py-2 px-4 bg-[#FFD7C3]"
+                  >
+                    Logout <span aria-hidden="true">&rarr;</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
         ) : (
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <Link
-              to={"/login"}
-              className="text-sm font-semibold leading-6 text-gray-900 rounded-xl py-2 px-4 bg-[#FFD7C3]"
+              to={"/auth/login"}
+              className="text-sm font-semibold leading-6 text-gray-900 rounded-box py-2 px-4 bg-[#FFD7C3]"
             >
               Login <span aria-hidden="true">&rarr;</span>
             </Link>

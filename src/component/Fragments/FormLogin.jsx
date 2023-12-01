@@ -77,7 +77,7 @@ const FormLogin = () => {
       <Button children="Login" type="submit" />
       <p className="text-black">
         Don't have account?{" "}
-        <Link to="/register" className="text-blue-500">
+        <Link to="/auth/register" className="text-blue-500">
           Register
         </Link>
       </p>

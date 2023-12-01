@@ -5,6 +5,7 @@ import ProductLayout from "../component/layout/ProductLayout";
 import { useState, useEffect } from "react";
 import CardComp from "../component/CardComp";
 import { getProducts } from "../services/product.service";
+import { Outlet } from "react-router-dom";
 
 const homePage = () => {
   const [products, setProducts] = useState([]);
@@ -29,6 +30,7 @@ const homePage = () => {
         ))}
       </ProductLayout>
       <FooterLayout />
+      <Outlet />
     </>
   );
 };

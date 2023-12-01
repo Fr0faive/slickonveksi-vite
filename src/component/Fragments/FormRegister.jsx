@@ -60,7 +60,7 @@ const FormRegister = () => {
       {mSuccess && <p className="text-green-500 my-3">{mSuccess}</p>}
       <p className="text-black">
         Already have account?{" "}
-        <Link to="/login" className="text-blue-500">
+        <Link to="/auth/login" className="text-blue-500">
           Login
         </Link>
       </p>

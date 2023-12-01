@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const API_URL = "http://localhost:5000"; // Gantilah dengan URL API sesuai kebutuhan
+const token = localStorage.getItem("Authorization");
 
 const loginUser = async (loginData) => {
   try {
@@ -28,7 +29,7 @@ const registerUser = async (registerData) => {
 const logoutUser = async () => {
   try {
     // Panggil API untuk logout menggunakan Axios
-    const token = localStorage.getItem("Authorization");
+
     if (!token) {
       throw new Error("Token not found");
     }
@@ -51,9 +52,33 @@ const logoutUser = async () => {
   }
 };
 
+const getUserData = async () => {
+  try {
+    // Panggil API untuk mendapatkan data user menggunakan Axios
+    const response = await axios.get(`${API_URL}/api/users/current`, {
+      headers: {
+        Authorization: `${token}`,
+      },
+    });
+    if (!token) {
+      throw new Error("Token not found");
+    }
+    return response.data;
+  } catch (error) {
+    // Menghandle kesalahan selama proses mendapatkan data user
+    throw error.response ? error.response.data : error.message;
+  }
+};
+
 const isAuthenticated = () => {
   const getToken = localStorage.getItem("Authorization");
   const token = getToken;
   return !!token; // Mengembalikan true jika token ada
 };
-export default { loginUser, registerUser, logoutUser, isAuthenticated };
+export default {
+  loginUser,
+  registerUser,
+  logoutUser,
+  isAuthenticated,
+  getUserData,
+};

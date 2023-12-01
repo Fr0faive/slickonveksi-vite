@@ -11,7 +11,8 @@ import AboutPage from "./pages/AboutPage";
 import Dashboard from "./pages/Dashboard";
 import Contact from "./pages/Contact";
 import NotFoundPage from "./pages/404Page";
-import PrivateRoute from "./route/private.route";
+import PrivateRoutes from "./route/private.route";
+import IsAuth from "./route/isAuthenticated";
 
 const router = createBrowserRouter([
   {
@@ -31,22 +32,50 @@ const router = createBrowserRouter([
     element: <AboutPage />,
   },
   {
-    path: "/login",
-    element: <LoginPage />,
+    path: "/auth",
+    element: <IsAuth />,
+    children: [
+      {
+        path: "/auth/login",
+        element: <LoginPage />,
+      },
+      {
+        path: "/auth/register",
+        element: <RegisterPage />,
+      },
+    ],
   },
   {
-    path: "/register",
-    element: <RegisterPage />,
-  },
-  {
-    path: "/dashboard/*",
-    element: <PrivateRoute element={Dashboard} />,
+    path: "/dashboard",
+    element: <PrivateRoutes />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
+    ],
   },
   {
     path: "*",
     element: <NotFoundPage />,
   },
 ]);
+
+// const router = createBrowserRouter(
+//   createRoutesFromElements(
+//     <Route path="/" element={<HomePage />}>
+//       <Route path="products" element={<ProductPage />} />
+//       <Route path="contact" element={<Contact />} />
+//       <Route path="tentang" element={<AboutPage />} />
+//       <Route path="login" element={<LoginPage />} />
+//       <Route path="register" element={<RegisterPage />} />
+//       <Route element={<AuthRequired />}>
+//         <Route path="dashboard" element={<Dashboard />} />
+//       </Route>
+//       <Route path="*" element={<NotFoundPage />} />
+//     </Route>
+//   )
+// );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

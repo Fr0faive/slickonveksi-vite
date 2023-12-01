@@ -4,7 +4,7 @@ import Logo from "../Elements/Logo/Logo";
 const AuthLayout = (props) => {
   const { children, title } = props;
   return (
-    <div className="bg-auth bg-cover h-screen flex justify-center items-center">
+    <div className="bg-[url('../assets/bg-auth.jpg')] bg-cover h-screen flex justify-center items-center">
       <div className="flex flex-wrap w-3/4 drop-shadow-xl">
         <div className="w-1/2 mx-auto bg-white/70 backdrop-blur-lg flex justify-center items-center rounded-l-2xl">
           <Link
