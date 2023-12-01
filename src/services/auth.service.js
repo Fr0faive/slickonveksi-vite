@@ -71,7 +71,6 @@ const getUserData = async () => {
 };
 
 const isAuthenticated = () => {
-  const getToken = localStorage.getItem("Authorization");
   const token = getToken;
   return !!token; // Mengembalikan true jika token ada
 };

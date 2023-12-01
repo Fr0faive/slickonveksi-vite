@@ -13,6 +13,7 @@ import Contact from "./pages/Contact";
 import NotFoundPage from "./pages/404Page";
 import PrivateRoutes from "./route/private.route";
 import IsAuth from "./route/isAuthenticated";
+import DashProduct from "./pages/DashProduct";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "/dashboard/products",
+        element: <DashProduct />,
       },
     ],
   },
