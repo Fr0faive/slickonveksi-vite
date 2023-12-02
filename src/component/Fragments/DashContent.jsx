@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "../../services/product.service";
+import productService from "../../services/product.service";
 const DashboardContent = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    getProducts((data) => {
+    productService.getProducts((data) => {
       setProducts(data);
     });
   }, []);

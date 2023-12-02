@@ -1,11 +1,11 @@
-import Table from "../component/Table";
+import Table from "../component/TableProduct";
 import Sidebar from "../component/layout/Sidebar";
 
 const DashProduct = () => {
   return (
     <>
       <Sidebar>
-        <div className="p-44">
+        <div className="px-44">
           <Table />
         </div>
       </Sidebar>

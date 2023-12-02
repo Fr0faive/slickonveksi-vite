@@ -4,13 +4,13 @@ import FooterLayout from "../component/layout/FooterLayout";
 import ProductLayout from "../component/layout/ProductLayout";
 import { useState, useEffect } from "react";
 import CardComp from "../component/CardComp";
-import { getProducts } from "../services/product.service";
+import productService from "../services/product.service";
 import { Outlet } from "react-router-dom";
 
 const homePage = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    getProducts((data) => {
+    productService.getProducts((data) => {
       setProducts(data);
     });
   }, []);
