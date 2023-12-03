@@ -6,6 +6,7 @@ const FileInput = (props) => {
       placeholder={placeholder}
       name={name}
       onChange={onChange}
+      accept="image/*"
       className="file-input file-input-bordered w-full bg-white text-gray-900"
     />
   );

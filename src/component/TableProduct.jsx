@@ -4,20 +4,23 @@ import Button from "./Elements/Button";
 import { InputElement, FileInputElement } from "./Elements/Input";
 
 const Table = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState({});
   const [dataProducts, setDataProducts] = useState([]);
   const handleChange = (e) => {
+    const { name, value, type, files } = e.target;
+
     setProducts((prevProducts) => ({
       ...prevProducts,
-      [e.target.name]: e.target.value,
+      [name]: type === "file" ? files[0] : value,
     }));
   };
 
   const handleAddProduct = async () => {
     try {
       const resultAdd = await productService.addProduct(products);
-      console.log("Berhasil Menambahkan Produk:", resultAdd);
+      console.log(resultAdd);
       alert("Berhasil Menambahkan Produk");
+      window.location.reload();
     } catch (e) {
       console.log(e);
       console.error("Gagal menambahkan produk:", e);
