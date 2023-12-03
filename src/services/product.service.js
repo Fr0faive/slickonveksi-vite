@@ -6,16 +6,12 @@ const token = localStorage.getItem("Authorization");
 
 const addProduct = (data) => {
   axios
-    .post(
-      `${URL}/api/products`,
-      data,
-      {
-        headers: {
-          Authorization: `${token}`,
-        },
+    .post(`${URL}/api/products`, data, {
+      headers: {
+        Authorization: `${token}`,
+        "Content-Type": "multipart/form-data",
       },
-      data
-    )
+    })
     .then((res) => {
       console.log(res);
     })

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import productService from "../services/product.service";
 import Button from "./Elements/Button";
-import InputElement from "./Elements/Input";
+import { InputElement, FileInputElement } from "./Elements/Input";
 
 const Table = () => {
   const [products, setProducts] = useState([]);
@@ -42,7 +42,7 @@ const Table = () => {
             <h3 className="font-bold text-lg">Tambah Produk</h3>
             <p className="py-4">Masukkan data produk</p>
             <div className="font-semibold">
-              <form method="dialog">
+              <form encType="multipart/form-data">
                 {/* if there is a button in form, it will close the modal */}
                 <InputElement
                   type="text"
@@ -70,6 +70,12 @@ const Table = () => {
                   placeholder="Stok Produk"
                   name="stock"
                   labelText="Stok"
+                  onChange={handleChange}
+                />
+                <FileInputElement
+                  placeholder="Gambar Produk"
+                  name="image"
+                  labelText="Gambar"
                   onChange={handleChange}
                 />
                 <div className="modal-action mt-0">
