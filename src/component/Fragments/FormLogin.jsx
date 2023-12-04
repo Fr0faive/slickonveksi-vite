@@ -21,7 +21,6 @@ const FormLogin = () => {
     console.log(e.target.username.value);
     try {
       const loginResult = await authService.loginUser(loginData);
-      console.log("Login berhasil:", loginResult);
       localStorage.setItem("Authorization", loginResult.data.token);
       localStorage.setItem("Roles", loginResult.data.roles);
       // Update authentication status using Redux

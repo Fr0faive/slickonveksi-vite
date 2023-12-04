@@ -1,33 +1,14 @@
 import { useEffect, useState } from "react";
 import productService from "../services/product.service";
 import Button from "./Elements/Button";
-import { InputElement, FileInputElement } from "./Elements/Input";
-
+import FormProduct from "./Fragments/FormProduct";
+import Modal from "./Elements/Modal/Modal";
+import FormEditProduct from "./Fragments/FormEditProduct";
 const Table = () => {
-  const [products, setProducts] = useState({});
   const [dataProducts, setDataProducts] = useState([]);
-  const handleChange = (e) => {
-    const { name, value, type, files } = e.target;
 
-    setProducts((prevProducts) => ({
-      ...prevProducts,
-      [name]: type === "file" ? files[0] : value,
-    }));
-  };
-
-  const handleAddProduct = async () => {
-    try {
-      const resultAdd = await productService.addProduct(products);
-      console.log(resultAdd);
-      alert("Berhasil Menambahkan Produk");
-      window.location.reload();
-    } catch (e) {
-      console.log(e);
-      console.error("Gagal menambahkan produk:", e);
-    }
-  };
   useEffect(() => {
-    productService.getProducts((data) => {
+    productService.getAllProducts((data) => {
       setDataProducts(data);
     });
   }, []);
@@ -40,61 +21,13 @@ const Table = () => {
         >
           Tambah
         </Button>
-        <dialog id="my_modal_1" className="modal bg-white/30 backdrop-blur-lg">
-          <div className="modal-box bg-[#FFF0E7]">
-            <h3 className="font-bold text-lg">Tambah Produk</h3>
-            <p className="py-4">Masukkan data produk</p>
-            <div className="font-semibold">
-              <form encType="multipart/form-data">
-                {/* if there is a button in form, it will close the modal */}
-                <InputElement
-                  type="text"
-                  placeholder="Nama Produk"
-                  name="name"
-                  labelText="Nama"
-                  onChange={handleChange}
-                />
-                <InputElement
-                  type="text"
-                  placeholder="Deskripsi Produk"
-                  name="description"
-                  labelText="Deskripsi"
-                  onChange={handleChange}
-                />
-                <InputElement
-                  type="number"
-                  placeholder="Harga Produk"
-                  name="price"
-                  labelText="Harga"
-                  onChange={handleChange}
-                />
-                <InputElement
-                  type="number"
-                  placeholder="Stok Produk"
-                  name="stock"
-                  labelText="Stok"
-                  onChange={handleChange}
-                />
-                <FileInputElement
-                  placeholder="Gambar Produk"
-                  name="image"
-                  labelText="Gambar"
-                  onChange={handleChange}
-                />
-                <div className="modal-action mt-0">
-                  <Button
-                    onClick={() =>
-                      document.getElementById("my_modal_1").close()
-                    }
-                  >
-                    Close
-                  </Button>
-                  <Button onClick={handleAddProduct}>Tambahkan</Button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </dialog>
+        <Modal
+          title="Tambah Produk"
+          content="masukkan data produk"
+          idModal="my_modal_1"
+        >
+          <FormProduct idModal="my_modal_1" />
+        </Modal>
       </div>
       <table className="table ">
         {/* head */}
@@ -105,19 +38,42 @@ const Table = () => {
             <th>Deskripsi</th>
             <th>Harga</th>
             <th>Stok</th>
+            <th> </th>
           </tr>
         </thead>
         <tbody>
           {/* row 1 */}
           {dataProducts.map((product) => (
-            <tr key={product.id}>
-              <th>{product.id}</th>
-              <td className="text-justify max-w-xs">{product.title}</td>
+            <tr key={product.product_id}>
+              <th>{product.product_id}</th>
+              <td className="text-justify max-w-xs">{product.name}</td>
               <td className="text-justify max-w-xl font-sans">
                 {product.description}
               </td>
               <td>Rp{product.price.toLocaleString("id-ID")}</td>
               <td>{product.stock}</td>
+              <td>
+                <Button
+                  onClick={() =>
+                    document.getElementById("modal_edit").showModal()
+                  }
+                >
+                  Edit
+                </Button>
+                <Modal
+                  title="Edit Produk"
+                  content="masukkan data produk"
+                  idModal="modal_edit"
+                >
+                  <FormEditProduct
+                    product_id={product.product_id}
+                    idModal="modal_edit"
+                  />
+                </Modal>
+              </td>
+              <td>
+                <Button>Hapus</Button>
+              </td>
             </tr>
           ))}
         </tbody>

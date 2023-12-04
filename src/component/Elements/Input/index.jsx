@@ -3,7 +3,7 @@ import FileInput from "./FileInput";
 import Label from "./Label";
 
 const InputElement = (props) => {
-  const { labelText, name, type, placeholder, onChange } = props;
+  const { labelText, name, type, placeholder, onChange, value } = props;
   return (
     <>
       <Label labelText={labelText} htmlFor={name} />
@@ -12,6 +12,7 @@ const InputElement = (props) => {
         type={type}
         placeholder={placeholder}
         onChange={onChange}
+        value={value}
       />
     </>
   );

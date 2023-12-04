@@ -3,7 +3,7 @@ import productService from "../../services/product.service";
 const DashboardContent = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    productService.getProducts((data) => {
+    productService.getAllProducts((data) => {
       setProducts(data);
     });
   }, []);

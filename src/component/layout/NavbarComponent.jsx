@@ -91,7 +91,7 @@ const NavbarComponent = () => {
               </div>
               <ul className="menu dropdown-content z-[1] p-2 shadow bg-white rounded-box w-52 mt-2">
                 <li>
-                  <Link to={"/dashboard"} className="text-gray-900 text-sm">
+                  <Link to={"/dashboard/"} className="text-gray-900 text-sm">
                     Dashboard
                   </Link>
                 </li>
