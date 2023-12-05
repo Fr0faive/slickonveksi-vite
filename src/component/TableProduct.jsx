@@ -6,6 +6,15 @@ import Modal from "./Elements/Modal/Modal";
 import FormEditProduct from "./Fragments/FormEditProduct";
 const Table = () => {
   const [dataProducts, setDataProducts] = useState([]);
+  const [selectedData, setSelectedData] = useState({});
+
+  const handleEdit = async (data) => {
+    // await productService.getProductsById(id, (data) => {
+    //   setSelectedData(data);
+    // });
+    setSelectedData(data);
+    document.getElementById("modal_edit").showModal();
+  };
 
   useEffect(() => {
     productService.getAllProducts((data) => {
@@ -53,20 +62,14 @@ const Table = () => {
               <td>Rp{product.price.toLocaleString("id-ID")}</td>
               <td>{product.stock}</td>
               <td>
-                <Button
-                  onClick={() =>
-                    document.getElementById("modal_edit").showModal()
-                  }
-                >
-                  Edit
-                </Button>
+                <Button onClick={() => handleEdit(product)}>Edit</Button>
                 <Modal
                   title="Edit Produk"
                   content="masukkan data produk"
                   idModal="modal_edit"
                 >
                   <FormEditProduct
-                    product_id={product.product_id}
+                    selectedData={selectedData}
                     idModal="modal_edit"
                   />
                 </Modal>

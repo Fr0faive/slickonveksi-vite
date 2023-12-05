@@ -3,19 +3,23 @@ import Button from "../Elements/Button";
 import { InputElement, FileInputElement } from "../Elements/Input";
 import productService from "../../services/product.service";
 const FormEditProduct = (props) => {
-  const { product_id, idModal } = props;
+  const { selectedData, idModal } = props;
+  console.log("Ini Selected Data", selectedData);
   const [dataProducts, setDataProducts] = useState({
     name: "",
     price: 0,
     description: "",
-    image: "",
     stock: 0,
   });
+  // useEffect(() => {
+  //   productService.getProductsById(product_id, (data) => {
+  //     setDataProducts(data);
+  //   });
+  // }, []);
+
   useEffect(() => {
-    productService.getProductsById(product_id, (data) => {
-      setDataProducts(data);
-    });
-  }, []);
+    setDataProducts(selectedData);
+  }, [selectedData]);
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
 
@@ -24,18 +28,15 @@ const FormEditProduct = (props) => {
       [name]: type === "file" ? files[0] : value,
     }));
   };
-
-  console.log(dataProducts);
   const handleUpdateProduct = async () => {
     try {
       const resultUpdate = await productService.updateProduct(
-        product_id,
+        selectedData.product_id,
         dataProducts
       );
       console.log(resultUpdate);
-      alert(`Produk ${products.name} berhasil diupdate`);
+      alert(`Produk ${dataProducts.name} berhasil diupdate`);
       document.getElementById(idModal).close();
-      window.location.reload();
     } catch (e) {
       console.log(e);
       console.error("Gagal mengupdate produk:", e);
@@ -77,17 +78,11 @@ const FormEditProduct = (props) => {
         value={dataProducts.stock}
         onChange={handleChange}
       />
-      <FileInputElement
-        placeholder="Gambar Produk"
-        name="image"
-        labelText="Gambar"
-        onChange={handleChange}
-      />
       <div className="modal-action mt-0">
         <Button onClick={() => document.getElementById(idModal).close()}>
           Close
         </Button>
-        <Button onClick={handleUpdateProduct}>Tambahkan</Button>
+        <Button onClick={handleUpdateProduct}>Update</Button>
       </div>
     </form>
   );

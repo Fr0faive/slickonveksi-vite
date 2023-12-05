@@ -19,7 +19,7 @@ const InputElement = (props) => {
 };
 
 const FileInputElement = (props) => {
-  const { labelText, name, type, placeholder, onChange } = props;
+  const { labelText, name, type, placeholder, onChange, value } = props;
   return (
     <>
       <Label labelText={labelText} htmlFor={name} />
@@ -28,6 +28,7 @@ const FileInputElement = (props) => {
         type={type}
         placeholder={placeholder}
         onChange={onChange}
+        value={value}
       />
     </>
   );

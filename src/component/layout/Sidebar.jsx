@@ -95,7 +95,6 @@ const Sidebar = (props) => {
             theme="dark"
             className="bg-[#FFF0E7] text-gray-900"
             mode="inline"
-            defaultSelectedKeys={["1"]}
             // items={[
             //   UserOutlined,
             //   VideoCameraOutlined,
