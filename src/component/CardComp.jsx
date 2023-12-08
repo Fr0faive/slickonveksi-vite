@@ -16,7 +16,7 @@ const CardComp = (props) => {
         <p className="text-justify mb-4">{text.substring(0, 120)}...</p>
         <div className="flex justify-evenly gap-32 items-center">
           <p className="mt-1 text-lg font-medium text-gray-900">
-            Price Rp{price}
+            Harga Rp{price}
           </p>
           <Button children="Add to Cart" />
         </div>

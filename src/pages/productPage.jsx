@@ -20,7 +20,7 @@ const productPage = () => {
           <CardComp
             key={product.id}
             img={product.image}
-            title={product.title}
+            title={product.name}
             price={product.price.toLocaleString("id-ID")}
             text={product.description}
           />
