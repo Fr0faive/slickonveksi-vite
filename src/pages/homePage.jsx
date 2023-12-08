@@ -10,7 +10,7 @@ import { Outlet } from "react-router-dom";
 const homePage = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    productService.getProducts((data) => {
+    productService.getAllProducts((data) => {
       setProducts(data);
     });
   }, []);
@@ -24,7 +24,7 @@ const homePage = () => {
             key={product.id}
             img={product.image}
             title={product.title}
-            price={product.price}
+            price={product.price.toLocaleString("id-ID")}
             text={product.description}
           />
         ))}

@@ -63,6 +63,7 @@ const Sidebar = (props) => {
       key: "3",
       icon: <UserOutlined />,
       label: "User",
+      href: "/dashboard/users",
     },
     {
       key: "4",
@@ -87,9 +88,11 @@ const Sidebar = (props) => {
             console.log(collapsed, type);
           }}
         >
-          <div className="demo-logo-vertical text-gray-900 flex flex-wrap px-6 py-3 gap-2">
-            <Logo size="w-7" />
-            <span className="text-lg">Slickonveksi</span>
+          <div className="demo-logo-vertical text-gray-900 py-3 ">
+            <Link to={"/"} className="flex flex-wrap px-6 gap-2">
+              <Logo size="w-7" />
+              <span className="text-lg">Slickonveksi</span>
+            </Link>
           </div>
           <Menu
             theme="dark"

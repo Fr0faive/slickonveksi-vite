@@ -63,7 +63,6 @@ const getAllProducts = (callback) => {
   axios
     .get(`${URL}/api/products`)
     .then((res) => {
-      console.log(res);
       callback(res.data.data);
     })
     .catch((err) => {

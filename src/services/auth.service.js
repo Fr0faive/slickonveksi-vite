@@ -70,6 +70,21 @@ const getUserData = async () => {
   }
 };
 
+const getUser = async (callback) => {
+  axios
+    .get(`${API_URL}/api/users`, {
+      headers: {
+        Authorization: `${token}`,
+      },
+    })
+    .then((res) => {
+      callback(res.data.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 const isAuthenticated = () => {
   const token = getToken;
   return !!token; // Mengembalikan true jika token ada
@@ -80,4 +95,5 @@ export default {
   logoutUser,
   isAuthenticated,
   getUserData,
+  getUser,
 };

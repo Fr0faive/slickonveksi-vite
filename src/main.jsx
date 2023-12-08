@@ -14,6 +14,7 @@ import NotFoundPage from "./pages/404Page";
 import PrivateRoutes from "./route/private.route";
 import IsAuth from "./route/isAuthenticated";
 import DashProduct from "./pages/DashProduct";
+import DashUser from "./pages/DashUser";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/products",
         element: <DashProduct />,
+      },
+      {
+        path: "/dashboard/users",
+        element: <DashUser />,
       },
     ],
   },

@@ -1,17 +1,14 @@
 import { useEffect, useState } from "react";
-import productService from "../services/product.service";
-import Button from "./Elements/Button";
-import FormProduct from "./Fragments/FormProduct";
-import Modal from "./Elements/Modal/Modal";
-import FormEditProduct from "./Fragments/FormEditProduct";
+import productService from "../../services/product.service";
+import Button from "../Elements/Button";
+import FormProduct from "../Fragments/FormProduct";
+import Modal from "../Elements/Modal/Modal";
+import FormEditProduct from "../Fragments/FormEditProduct";
 const Table = () => {
   const [dataProducts, setDataProducts] = useState([]);
   const [selectedData, setSelectedData] = useState({});
 
   const handleEdit = async (data) => {
-    // await productService.getProductsById(id, (data) => {
-    //   setSelectedData(data);
-    // });
     setSelectedData(data);
     document.getElementById("modal_edit").showModal();
   };

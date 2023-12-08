@@ -8,7 +8,7 @@ import productService from "../services/product.service";
 const productPage = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    productService.getProducts((data) => {
+    productService.getAllProducts((data) => {
       setProducts(data);
     });
   }, []);
@@ -21,7 +21,7 @@ const productPage = () => {
             key={product.id}
             img={product.image}
             title={product.title}
-            price={product.price}
+            price={product.price.toLocaleString("id-ID")}
             text={product.description}
           />
         ))}

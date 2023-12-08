@@ -1,16 +1,16 @@
-import Table from "../component/layout/TableProduct";
 import Sidebar from "../component/layout/Sidebar";
+import TableUser from "../component/layout/TableUser";
 
-const DashProduct = () => {
+const DashUser = () => {
   return (
     <>
       <Sidebar>
         <div className="px-44">
-          <Table />
+          <TableUser />
         </div>
       </Sidebar>
     </>
   );
 };
 
-export default DashProduct;
+export default DashUser;
