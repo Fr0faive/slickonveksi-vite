@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000"; // Gantilah dengan URL API sesuai kebutuhan
+const API_URL = "https://api.faikarmocht.my.id"; // Gantilah dengan URL API sesuai kebutuhan
 const token = localStorage.getItem("Authorization");
 
 const loginUser = async (loginData) => {

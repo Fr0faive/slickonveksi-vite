@@ -1,23 +1,5 @@
-// import {
-//   Card,
-//   Typography,
-//   List,
-//   ListItem,
-//   ListItemPrefix,
-//   ListItemSuffix,
-//   Chip,
-// } from "@material-tailwind/react";
-// import {
-//   PresentationChartBarIcon,
-//   ShoppingBagIcon,
-//   UserCircleIcon,
-//   Cog6ToothIcon,
-//   InboxIcon,
-//   PowerIcon,
-// } from "@heroicons/react/24/solid";
 import Logo from "../Elements/Logo/Logo";
-// import { Link } from "react-router-dom";
-// import Button from "../Elements/Button";
+import Button from "../Elements/Button";
 import authService from "../../services/auth.service";
 import React from "react";
 import {
@@ -110,8 +92,12 @@ const Sidebar = (props) => {
             // }))}
           >
             {itemNav.map((item) => (
-              <Menu.Item key={item.key} icon={item.icon} onClick={item.onClick}>
-                <Link to={item.href}>{item.label}</Link>
+              <Menu.Item key={item.key} icon={item.icon}>
+                {item.label === "Logout" ? (
+                  <Button onClick={handleLogout}>{item.label}</Button>
+                ) : (
+                  <Link to={item.href}>{item.label}</Link>
+                )}
               </Menu.Item>
             ))}
           </Menu>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://localhost:5000";
+const URL = "https://api.faikarmocht.my.id";
 
 const token = localStorage.getItem("Authorization");
 
