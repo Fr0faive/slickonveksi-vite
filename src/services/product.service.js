@@ -70,10 +70,26 @@ const getAllProducts = (callback) => {
     });
 };
 
+const deleteProduct = (id) => {
+  axios
+    .delete(`${URL}/api/products/${id}`, {
+      headers: {
+        Authorization: `${token}`,
+      },
+    })
+    .then((res) => {
+      console.log(res.data.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 export default {
   getProducts,
   getAllProducts,
   addProduct,
   getProductsById,
   updateProduct,
+  deleteProduct,
 };

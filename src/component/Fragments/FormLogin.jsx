@@ -21,15 +21,19 @@ const FormLogin = () => {
     console.log(e.target.username.value);
     try {
       const loginResult = await authService.loginUser(loginData);
-      localStorage.setItem("Authorization", loginResult.data.token);
-      localStorage.setItem("Roles", loginResult.data.roles);
-      // Update authentication status using Redux
-      alert("Login berhasil");
+      if (loginResult) {
+        localStorage.setItem("Authorization", loginResult.data.token);
+        localStorage.setItem("Roles", loginResult.data.roles);
+        // Update authentication status using Redux
+        alert("Login berhasil");
 
-      // Redirect to the home page or the previous protected route
-      navigate("/");
+        // Redirect to the home page or the previous protected route
+        navigate("/");
 
-      // Store the token in the context
+        // Store the token in the context
+      } else {
+        alert("Login gagal");
+      }
     } catch (error) {
       console.log(loginData);
       console.error("Login gagal:", error.errors);

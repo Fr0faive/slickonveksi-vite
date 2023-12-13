@@ -13,6 +13,19 @@ const Table = () => {
     document.getElementById("modal_edit").showModal();
   };
 
+  const handleDelete = async (id) => {
+    try {
+      confirm("Apakah anda yakin ingin menghapus data ini?");
+      if (confirm) {
+        await productService.deleteProduct(id);
+        alert("Data berhasil di hapus");
+        window.location.reload();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     productService.getAllProducts((data) => {
       setDataProducts(data);
@@ -72,7 +85,9 @@ const Table = () => {
                 </Modal>
               </td>
               <td>
-                <Button>Hapus</Button>
+                <Button onClick={() => handleDelete(product.product_id)}>
+                  Hapus
+                </Button>
               </td>
             </tr>
           ))}
