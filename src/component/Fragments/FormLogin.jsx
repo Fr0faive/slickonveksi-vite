@@ -28,7 +28,7 @@ const FormLogin = () => {
         alert("Login berhasil");
 
         // Redirect to the home page or the previous protected route
-        navigate("/");
+        window.location.reload();
 
         // Store the token in the context
       } else {

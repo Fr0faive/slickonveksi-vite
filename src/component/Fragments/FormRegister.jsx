@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const FormRegister = () => {
   const [mSuccess, setMSuccess] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const handleChange = (e) => {
     setRegisterData({ ...registerData, [e.target.name]: e.target.value });
   };
@@ -18,6 +19,7 @@ const FormRegister = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     setMSuccess("");
+    setIsSubmitting(true);
     try {
       // Panggil fungsi registerUser dari authService
       await authService.registerUser(registerData);
@@ -31,6 +33,8 @@ const FormRegister = () => {
     } catch (error) {
       // Registrasi gagal, Anda dapat menangani kesalahan di sini
       console.error("Registrasi gagal", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
   return (
@@ -56,7 +60,15 @@ const FormRegister = () => {
         placeholder="Password"
         onChange={handleChange}
       />
-      <Button children="SignUp" type="submit" />
+      <Button type="submit" disabled={isSubmitting}>
+        {isSubmitting ? (
+          <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
+            {/* ... */}
+          </svg>
+        ) : (
+          "SignUp"
+        )}
+      </Button>
       {mSuccess && <p className="text-green-500 my-3">{mSuccess}</p>}
       <p className="text-black">
         Already have account?{" "}

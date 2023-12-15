@@ -158,12 +158,46 @@ const NavbarComponent = () => {
                 ))}
               </div>
               <div className="py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Log in
-                </a>
+                {hasToken ? (
+                  <div className="lg:hidden flex lg:flex-1 lg:justify-end">
+                    <div className="dropdown dropdown-hover dropdown-content">
+                      <div
+                        tabIndex={0}
+                        role="button"
+                        className="text-sm font-semibold leading-6 text-gray-900 rounded-xl py-2 px-4 bg-[#FFD7C3]"
+                      >
+                        User <span aria-hidden="true">&rarr;</span>
+                      </div>
+                      <ul className="menu dropdown-content z-[1] p-2 shadow bg-white rounded-box w-52 mt-2">
+                        <li>
+                          <Link
+                            to={"/dashboard/"}
+                            className="text-gray-900 text-sm"
+                          >
+                            Dashboard
+                          </Link>
+                        </li>
+                        <li>
+                          <button
+                            onClick={handleLogout}
+                            className="text-sm font-semibold leading-6 text-gray-900 rounded-box py-2 px-4 bg-[#FFD7C3]"
+                          >
+                            Logout <span aria-hidden="true">&rarr;</span>
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="lg:hidden flex lg:flex-1 lg:justify-end">
+                    <Link
+                      to={"/auth/login"}
+                      className="text-sm font-semibold leading-6 text-gray-900 rounded-box py-2 px-4 bg-[#FFD7C3]"
+                    >
+                      Login <span aria-hidden="true">&rarr;</span>
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import Button from "./Elements/Button/index";
 
 const CardComp = (props) => {
-  const { img, name, text, price } = props;
+  const { img, name, text, price, onClick } = props;
   return (
     <div className="card w-[400px] bg-[#FFF0E7] shadow-xl backdrop-blur-md">
       <figure className="px-10 pt-10 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg xl:aspect-h-8 xl:aspect-w-7">
@@ -18,7 +18,7 @@ const CardComp = (props) => {
           <p className="mt-1 text-lg font-medium text-gray-900">
             Harga Rp{price}
           </p>
-          <Button children="Add to Cart" />
+          <Button children="Add to Cart" onClick={onClick} />
         </div>
       </div>
     </div>

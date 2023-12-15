@@ -43,7 +43,8 @@ const PrivateRoutes = () => {
     isAdmin ? (
       <Outlet />
     ) : (
-      <Navigate to="/" replace state={{ from: location }} />
+      (alert("Anda bukan admin"),
+      (<Navigate to="/" replace state={{ from: location }} />))
     )
   ) : (
     <Navigate to="/auth/login" replace state={{ from: location }} />

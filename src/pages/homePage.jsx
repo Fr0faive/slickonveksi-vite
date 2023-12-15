@@ -26,6 +26,9 @@ const homePage = () => {
             name={product.name}
             price={product.price.toLocaleString("id-ID")}
             text={product.description}
+            onClick={() => {
+              window.location.href = `/products`;
+            }}
           />
         ))}
       </ProductLayout>

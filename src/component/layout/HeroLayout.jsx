@@ -16,9 +16,9 @@ const HeroLayout = () => {
           }}
         />
       </div> */}
-      <div className="hero-content max-w-screen-2xl flex-col grow lg:flex-row items-center rounded-lg">
+      <div className="py-20 hero-content max-w-screen-2xl flex-col grow lg:flex-row items-center rounded-lg">
         <div className="md:mx-7 ml-2 mr-2 w-1/2">
-          <h1 className="text-3xl sm:text-7xl font-bold text-black">
+          <h1 className="text-5xl md:text-7xl font-bold text-black">
             Slickonveksi.
           </h1>
           <p className="pt-6 text-black text-xl text-justify">
