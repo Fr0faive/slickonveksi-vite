@@ -4,6 +4,9 @@ import ProductLayout from "../component/layout/ProductLayout";
 import { useState, useEffect } from "react";
 import CardComp from "../component/CardComp";
 import productService from "../services/product.service";
+import Modal from "../component/Elements/Modal/Modal";
+import Button from "../component/Elements/Button";
+import CartList from "../component/Fragments/CartList";
 
 const productPage = () => {
   const [products, setProducts] = useState([]);
@@ -22,7 +25,9 @@ const productPage = () => {
         const product = products.find((p) => p.product_id === item.id);
         return acc + product.price * item.qty;
       }, 0);
+
       setTotalPrice(sum);
+
       localStorage.setItem("cart", JSON.stringify(cart));
     }
   }, [cart]);
@@ -47,6 +52,17 @@ const productPage = () => {
     <>
       <NavbarComponent />
       <ProductLayout>
+        <div>
+          <Button
+            onClick={() => document.getElementById("cart_modal").showModal()}
+          >
+            <div className="absolute  badge">{cart.length}</div>
+            Cart
+          </Button>
+          <Modal idModal="cart_modal">
+            <CartList cart={cart} totalPrice={totalPrice} products={products} />
+          </Modal>
+        </div>
         {products.map((product) => (
           <CardComp
             key={product.product_id}
@@ -57,36 +73,6 @@ const productPage = () => {
             onClick={() => handleToCart(product.product_id)}
           />
         ))}
-        <div className="flex flex-col  text-gray-900">
-          <h1>Cart</h1>
-          <table className="table-auto border-spacing-x-5 border-separate">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Qty</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cart.map((item) => {
-                const product = products.find((p) => p.product_id === item.id);
-                return (
-                  <tr key={item.id}>
-                    <td>{product.name}</td>
-                    <td>{product.price}</td>
-                    <td>{item.qty}</td>
-                    <td>{product.price * item.qty}</td>
-                  </tr>
-                );
-              })}
-              <tr className="font-semibold">
-                <td colSpan={3}>Total</td>
-                <td>Rp{totalPrice.toLocaleString("id-ID")}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
       </ProductLayout>
       <FooterLayout />
     </>
