@@ -75,7 +75,7 @@ const productPage = () => {
           </Button>
           <Modal idModal="cart_modal">
             <CartList cart={cart} totalPrice={totalPrice} products={products} />
-            <div className="flex flex-row justify-end">
+            <div className="flex flex-row gap-4 justify-end">
               <Button
                 onClick={() => document.getElementById("cart_modal").close()}
               >

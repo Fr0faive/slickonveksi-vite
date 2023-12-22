@@ -28,7 +28,7 @@ const HeroLayout = () => {
             oleh para ahli konveksi kami, setiap produk menjadi manifestasi gaya
             dan fungsionalitas.
           </p>
-          <Link to={"/product"}>
+          <Link to={"/products"}>
             <Button children="Pesan Sekarang" />
           </Link>
         </div>
