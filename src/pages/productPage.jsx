@@ -75,12 +75,14 @@ const productPage = () => {
           </Button>
           <Modal idModal="cart_modal">
             <CartList cart={cart} totalPrice={totalPrice} products={products} />
-            <Button
-              onClick={() => document.getElementById("cart_modal").close()}
-            >
-              Close
-            </Button>
-            <Button onClick={() => console.log("Checkout")}>Checkout</Button>
+            <div className="flex flex-row justify-end">
+              <Button
+                onClick={() => document.getElementById("cart_modal").close()}
+              >
+                Close
+              </Button>
+              <Button onClick={() => console.log("Checkout")}>Checkout</Button>
+            </div>
           </Modal>
         </div>
         <ProductLayout>
