@@ -25,6 +25,7 @@ const homePage = () => {
             img={product.image}
             name={product.name}
             price={product.price.toLocaleString("id-ID")}
+            stock={product.stock}
             text={product.description}
             onClick={() => {
               window.location.href = `/products`;
