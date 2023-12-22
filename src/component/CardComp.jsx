@@ -6,11 +6,11 @@ const CardComp = (props) => {
   const [textStok, setTextStok] = useState("");
   useEffect(() => {
     if (stock > 0 && stock < 5) {
-      setTextStok("Stok kurang dari 5");
+      setTextStok("kurang dari 5");
     } else if (stock > 5) {
-      setTextStok("Stok tersedia");
+      setTextStok("tersedia");
     } else {
-      setTextStok("Stok habis");
+      setTextStok("habis");
     }
   }, []);
   return (
