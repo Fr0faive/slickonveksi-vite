@@ -80,6 +80,7 @@ const productPage = () => {
             >
               Close
             </Button>
+            <Button onClick={() => console.log("Checkout")}>Checkout</Button>
           </Modal>
         </div>
         <ProductLayout>
