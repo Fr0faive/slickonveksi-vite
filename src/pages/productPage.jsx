@@ -49,7 +49,10 @@ const productPage = () => {
           )
         );
       } else {
-        alert("Stok habis");
+        alert(
+          "Stok hanya tersisa " +
+            products.find((p) => p.product_id === id).stock
+        );
       }
     } else {
       setCart([...cart, { id, qty: 1 }]);
@@ -59,11 +62,15 @@ const productPage = () => {
     <>
       <NavbarComponent />
       <div className="flex">
-        <div className="pl-2 h-screen fixed flex justify-center items-center">
+        <div className="pl-5 mx-auto h-screen fixed flex justify-center items-center">
           <Button
             onClick={() => document.getElementById("cart_modal").showModal()}
           >
-            <div className="badge">{cart.length}</div>
+            <div className="relative">
+              <div className="absolute bottom-0 right-0 badge">
+                {cart.length}
+              </div>
+            </div>
             Cart
           </Button>
           <Modal idModal="cart_modal">
