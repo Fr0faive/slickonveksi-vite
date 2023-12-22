@@ -39,11 +39,18 @@ const productPage = () => {
 
   const handleToCart = (id) => {
     if (cart.find((item) => item.id === id)) {
-      setCart(
-        cart.map((item) =>
-          item.id === id ? { ...item, qty: item.qty + 1 } : item
-        )
-      );
+      if (
+        cart.find((item) => item.id === id).qty <
+        products.find((p) => p.product_id === id).stock
+      ) {
+        setCart(
+          cart.map((item) =>
+            item.id === id ? { ...item, qty: item.qty + 1 } : item
+          )
+        );
+      } else {
+        alert("Stok habis");
+      }
     } else {
       setCart([...cart, { id, qty: 1 }]);
     }
@@ -51,29 +58,37 @@ const productPage = () => {
   return (
     <>
       <NavbarComponent />
-      <ProductLayout>
-        <div>
+      <div className="flex">
+        <div className="pl-2 h-screen fixed flex justify-center items-center">
           <Button
             onClick={() => document.getElementById("cart_modal").showModal()}
           >
-            <div className="absolute  badge">{cart.length}</div>
+            <div className="badge">{cart.length}</div>
             Cart
           </Button>
           <Modal idModal="cart_modal">
             <CartList cart={cart} totalPrice={totalPrice} products={products} />
+            <Button
+              onClick={() => document.getElementById("cart_modal").close()}
+            >
+              Close
+            </Button>
           </Modal>
         </div>
-        {products.map((product) => (
-          <CardComp
-            key={product.product_id}
-            img={product.image}
-            title={product.name}
-            price={product.price.toLocaleString("id-ID")}
-            text={product.description}
-            onClick={() => handleToCart(product.product_id)}
-          />
-        ))}
-      </ProductLayout>
+        <ProductLayout>
+          {products.map((product) => (
+            <CardComp
+              key={product.product_id}
+              img={product.image}
+              name={product.name}
+              stock={product.stock}
+              price={product.price.toLocaleString("id-ID")}
+              text={product.description}
+              onClick={() => handleToCart(product.product_id)}
+            />
+          ))}
+        </ProductLayout>
+      </div>
       <FooterLayout />
     </>
   );

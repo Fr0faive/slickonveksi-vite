@@ -49,7 +49,6 @@ const Sidebar = (props) => {
     },
     {
       key: "4",
-      icon: <FileOutlined />,
       label: "Logout",
       onClick: handleLogout,
     },

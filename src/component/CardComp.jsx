@@ -1,7 +1,18 @@
+import { useEffect, useState } from "react";
 import Button from "./Elements/Button/index";
 
 const CardComp = (props) => {
-  const { img, name, text, price, onClick } = props;
+  const { img, name, text, price, onClick, stock } = props;
+  const [textStok, setTextStok] = useState("");
+  useEffect(() => {
+    if (stock > 0 && stock < 5) {
+      setTextStok("Stok kurang dari 5");
+    } else if (stock > 5) {
+      setTextStok("Stok tersedia");
+    } else {
+      setTextStok("Stok habis");
+    }
+  }, []);
   return (
     <div className="card w-[400px] bg-[#FFF0E7] shadow-xl backdrop-blur-md">
       <figure className="px-10 pt-10 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg xl:aspect-h-8 xl:aspect-w-7">
@@ -12,6 +23,7 @@ const CardComp = (props) => {
         />
       </figure>
       <div className="card-body text-gray-900">
+        <p className="font-mono text-end text-xs">Stok: {textStok} </p>
         <h3 className="card-title">{name}</h3>
         <p className="text-justify mb-4">{text.substring(0, 120)}...</p>
         <div className="flex justify-evenly gap-32 items-center">

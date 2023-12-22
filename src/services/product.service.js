@@ -47,18 +47,6 @@ const updateProduct = (id, data) => {
     });
 };
 
-const getProducts = (callback) => {
-  axios
-    .get("https://fakestoreapi.com/products")
-    .then((res) => {
-      console.log(res);
-      callback(res.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
 const getAllProducts = (callback) => {
   axios
     .get(`${URL}/api/products`)
@@ -86,7 +74,6 @@ const deleteProduct = (id) => {
 };
 
 export default {
-  getProducts,
   getAllProducts,
   addProduct,
   getProductsById,
